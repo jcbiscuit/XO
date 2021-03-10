@@ -47,7 +47,7 @@ struct GameFlow {
             
             if content[possibility[0]] != nil {
 
-                print(content[possibility[0]], content[possibility[1]])
+                print(content[possibility[0]] as Any, content[possibility[1]] as Any)
                 if content[possibility[0]] == content[possibility[1]], content[possibility[1]] == content[possibility[2]] {
                     return true
                 }
