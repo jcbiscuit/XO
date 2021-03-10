@@ -40,31 +40,95 @@ struct SplashScreenView: View {
     }
 }
 
+
+enum Player: String {
+    case one
+    case two
+}
+
+extension Player {
+    mutating func toggle() {
+        if self == .one {
+            self = .two
+        } else {
+            self = .one
+        }
+    }
+}
+
 struct ContentView: View {
+    
+   // @State var remember: String = ""
+    @State var viewModel = GameFlow()
+    
+    @State var player: Player = .one
+    
     var body: some View {
-        
+        VStack(spacing: 10){
+            
+        Text("Noughts and Crosses")
+            .font(.largeTitle)
+            .bold()
+            
+            Spacer()
+            
         VStack(spacing: 1) {
             
             ForEach(0...2, id: \.self) { i in
                 HStack(spacing: 1) {
                 ForEach(0...2, id: \.self) { j in
                                            Button(action: {
-                                           
+                                            //self.remember = "\(i)\(j)"
+                                            self.buttonTapped(key: "\(i)\(j)")
                                            }, label: {
-                                           Text("x")
+                                            Text(self.getValue(key: "\(i)\(j)"))
+//                                            Text(self.remember == "\(i)\(j)" ? "x" : "")
                                            })
                                            .buttonStyle(CustomButtonStyle())
             }
             }
         }
-        }.background(Color.red) //changes border color of box selected
+        }
+        .background(Color.red) //changes border color of box selected
+            
+            Spacer()
+            
+            Button(action: {
+                
+            }, label: {
+                Spacer()
+                Text("New game")
+                    .bold()
+                    .foregroundColor(.black)
+                Spacer()
+                
+            }).padding()
+            .background(Color.purple)
+            .cornerRadius(20)
+            .padding()
 }
+}
+    
+    func buttonTapped(key: String) {
+        if player == .one {
+            viewModel.setValue(.cross, for: key)
+        } else {
+            viewModel.setValue(.circle, for: key)
+        }
+        player.toggle()
+    }
+    
+    func getValue(key: String) -> String {
+        viewModel.getValue(for: key).rawValue
+    }
 }
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
         ContentView().preferredColorScheme(.dark)
     }
+    
+   
 }
 
 struct CustomButtonStyle: ButtonStyle {
@@ -72,10 +136,33 @@ struct CustomButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(.largeTitle)
-            .frame(width: 80, height: 80)
+            .frame(width: 90, height: 90)
             .padding()
             .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
             .background(Color.white)
             .scaleEffect(configuration.isPressed ? 0.9 : 1.0)
+    }
+}
+
+enum ButtonState: String {
+    case cross = "x"
+    case circle = "o"
+    case none = ""
+}
+
+struct GameFlow {
+    
+    var content: [String: ButtonState] = [:]
+    
+    func getValue(for key: String) -> ButtonState {
+        if let value = content[key] {
+            return value
+        } else {
+            return .none
+        }
+    }
+    
+    mutating func setValue(_ state: ButtonState, for key: String) {
+        content[key] = state
     }
 }
