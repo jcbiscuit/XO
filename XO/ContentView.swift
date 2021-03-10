@@ -59,27 +59,39 @@ struct ContentView: View {
             .bold()
             
             Spacer()
-            Text("Won: \(wonPlayer)")
-            Spacer()
             
-        VStack(spacing: 1) {
-            
-            ForEach(0...2, id: \.self) { i in
-                HStack(spacing: 1) {
-                ForEach(0...2, id: \.self) { j in
-                                           Button(action: {
-                                            //self.remember = "\(i)\(j)"
-                                            self.buttonTapped(key: "\(i)\(j)")
-                                           }, label: {
-                                            Text(self.getValue(key: "\(i)\(j)"))
+            ZStack {
+                VStack(spacing: 1) {
+                    
+                    ForEach(0...2, id: \.self) { i in
+                        HStack(spacing: 1) {
+                        ForEach(0...2, id: \.self) { j in
+                                                   Button(action: {
+                                                    //self.remember = "\(i)\(j)"
+                                                    self.buttonTapped(key: "\(i)\(j)")
+                                                   }, label: {
+                                                    Text(self.getValue(key: "\(i)\(j)"))
 
-                                           })
-                                           .buttonStyle(CustomButtonStyle())
+                                                   })
+                                                   .buttonStyle(CustomButtonStyle())
+                    }
+                    }
+                }
+                }
+                .background(Color.red) //changes border color of box selected
+                .opacity(self.wonPlayer.isEmpty ? 1.0 : 0.7)
+                .disabled(self.wonPlayer.isEmpty ? false : true)
+                    
+                    Text(wonPlayer.isEmpty ? "" : "Won: \(wonPlayer)")
+                        .font(.largeTitle)
+                        .padding()
+                        .background(Color.yellow)
+                        .foregroundColor(Color(.white))
+                        .opacity(wonPlayer.isEmpty ? 0.0 : 1.0)
+
             }
-            }
-        }
-        }
-        .background(Color.red) //changes border color of box selected
+            
+        
             
             Spacer()
             
@@ -108,7 +120,7 @@ struct ContentView: View {
         
         if viewModel.isWin() {
             print("Win: \(player)")
-            self.wonPlayer = player.rawValue
+            self.wonPlayer = player.identity
         } else {
         
         player.toggle()
@@ -121,6 +133,8 @@ struct ContentView: View {
     func newGameButtonTapped() {
         viewModel.content = [:]
         player = .one
+        
+        wonPlayer = ""
     }
 }
 
