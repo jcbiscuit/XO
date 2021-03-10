@@ -11,6 +11,9 @@
 		31496D4525F8CB2500CBA8E0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31496D4425F8CB2500CBA8E0 /* ContentView.swift */; };
 		31496D4725F8CB2700CBA8E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31496D4625F8CB2700CBA8E0 /* Assets.xcassets */; };
 		31496D4A25F8CB2700CBA8E0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31496D4925F8CB2700CBA8E0 /* Preview Assets.xcassets */; };
+		31496D5325F8E54D00CBA8E0 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31496D5225F8E54D00CBA8E0 /* Player.swift */; };
+		31496D5625F8E5E500CBA8E0 /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31496D5525F8E5E500CBA8E0 /* CustomButtonStyle.swift */; };
+		31496D5925F8E62200CBA8E0 /* GameFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31496D5825F8E62200CBA8E0 /* GameFlow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,9 @@
 		31496D4625F8CB2700CBA8E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31496D4925F8CB2700CBA8E0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		31496D4B25F8CB2700CBA8E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31496D5225F8E54D00CBA8E0 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		31496D5525F8E5E500CBA8E0 /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
+		31496D5825F8E62200CBA8E0 /* GameFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFlow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,9 @@
 			children = (
 				31496D4225F8CB2500CBA8E0 /* XOApp.swift */,
 				31496D4425F8CB2500CBA8E0 /* ContentView.swift */,
+				31496D5825F8E62200CBA8E0 /* GameFlow.swift */,
+				31496D5525F8E5E500CBA8E0 /* CustomButtonStyle.swift */,
+				31496D5225F8E54D00CBA8E0 /* Player.swift */,
 				31496D4625F8CB2700CBA8E0 /* Assets.xcassets */,
 				31496D4B25F8CB2700CBA8E0 /* Info.plist */,
 				31496D4825F8CB2700CBA8E0 /* Preview Content */,
@@ -139,6 +148,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				31496D4525F8CB2500CBA8E0 /* ContentView.swift in Sources */,
+				31496D5325F8E54D00CBA8E0 /* Player.swift in Sources */,
+				31496D5625F8E5E500CBA8E0 /* CustomButtonStyle.swift in Sources */,
+				31496D5925F8E62200CBA8E0 /* GameFlow.swift in Sources */,
 				31496D4325F8CB2500CBA8E0 /* XOApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
