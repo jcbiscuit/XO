@@ -13,8 +13,9 @@ struct SplashScreenView: View {
     @State var endSplash = false
     
     var body: some View {
-        
-        Image("arrows")
+        ZStack {
+        Color("splashscreencolor")
+        Image("oxlogo3")
             .resizable()
             .renderingMode(.original)
             .aspectRatio(contentMode: .fit)
@@ -27,7 +28,7 @@ struct SplashScreenView: View {
             .onAppear(perform: animateSplash)
             .opacity(endSplash ? 0 : 1)
         
-        
+        }
     }
     
     func animateSplash() {
@@ -54,19 +55,17 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
-        VStack(spacing: 10){
+        VStack(){
+          
+        Image("oxlogo3")
             
-        Text("Noughts and Crosses")
-            .font(.largeTitle)
-            .fontWeight(.bold).kerning(3)
-            .bold()
-            .foregroundColor(.blue)
             .padding(.top, 50)
             
-            Spacer()
+            
+            
             
             ZStack {
-                VStack(spacing: 1) {
+                VStack(spacing: 3) {
                     
                     ForEach(0...2, id: \.self) { i in
                         HStack(spacing: 1) {
@@ -89,9 +88,10 @@ struct ContentView: View {
                     
                     Text(wonPlayer.isEmpty ? "" : "The Winner is: \(wonPlayer)")
                         .font(.largeTitle)
+                        .fontWeight(.thin)
                         .padding()
                         .background(Color.black)
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color.blue)
                         .opacity(wonPlayer.isEmpty ? 0.0 : 1.0)
 
             }
@@ -110,7 +110,8 @@ struct ContentView: View {
                     .font(.system(size: 35, weight: .thin))
                 Spacer()
                 
-            }).padding()
+            }).padding(.bottom, 150)
+            .padding(.top, 50)
             .background(Color.black)
             .cornerRadius(20)
             .padding()

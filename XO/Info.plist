@@ -29,8 +29,10 @@
 	<true/>
 	<key>UILaunchScreen</key>
 	<dict>
+		<key>UIColorName</key>
+		<string>splashscreencolor</string>
 		<key>UIImageName</key>
-		<string>arrows</string>
+		<string>oxlogo3</string>
 	</dict>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
