@@ -52,11 +52,16 @@ struct ContentView: View {
     @State var wonPlayer: String = ""
     
     var body: some View {
+        ZStack {
+            Color.black.ignoresSafeArea()
         VStack(spacing: 10){
             
         Text("Noughts and Crosses")
             .font(.largeTitle)
+            .fontWeight(.bold).kerning(3)
             .bold()
+            .foregroundColor(.blue)
+            .padding(.top, 50)
             
             Spacer()
             
@@ -78,15 +83,15 @@ struct ContentView: View {
                     }
                 }
                 }
-                .background(Color.red) //changes border color of box selected
+                .background(LinearGradient(gradient: Gradient.init(colors: [.pink, .blue]), startPoint: .topLeading, endPoint: .bottomTrailing)) //changes border color of box selected
                 .opacity(self.wonPlayer.isEmpty ? 1.0 : 0.7)
                 .disabled(self.wonPlayer.isEmpty ? false : true)
                     
-                    Text(wonPlayer.isEmpty ? "" : "Won: \(wonPlayer)")
+                    Text(wonPlayer.isEmpty ? "" : "The Winner is: \(wonPlayer)")
                         .font(.largeTitle)
                         .padding()
-                        .background(Color.yellow)
-                        .foregroundColor(Color(.white))
+                        .background(Color.black)
+                        .foregroundColor(Color.white)
                         .opacity(wonPlayer.isEmpty ? 0.0 : 1.0)
 
             }
@@ -101,16 +106,17 @@ struct ContentView: View {
                 Spacer()
                 Text("New game")
                     .bold()
-                    .foregroundColor(.black)
+                    .foregroundColor(.blue)
+                    .font(.system(size: 35, weight: .thin))
                 Spacer()
                 
             }).padding()
-            .background(Color.purple)
+            .background(Color.black)
             .cornerRadius(20)
             .padding()
 }
 }
-    
+    }
     func buttonTapped(key: String) {
         if player == .one {
             viewModel.setValue(.cross, for: key)
@@ -137,6 +143,7 @@ struct ContentView: View {
         wonPlayer = ""
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

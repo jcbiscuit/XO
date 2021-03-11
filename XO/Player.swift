@@ -19,7 +19,7 @@ extension Player {
         case .one:
             return "x"
         default:
-            return "o"
+            return "O"
         }
     }
     
