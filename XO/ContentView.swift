@@ -14,7 +14,7 @@ struct SplashScreenView: View {
     
     var body: some View {
         ZStack {
-        Color("splashscreencolor")
+            Color("splashscreencolor")
         Image("oxlogo3")
             .resizable()
             .renderingMode(.original)
@@ -87,11 +87,12 @@ struct ContentView: View {
                 .disabled(self.wonPlayer.isEmpty ? false : true)
                     
                     Text(wonPlayer.isEmpty ? "" : "The Winner is: \(wonPlayer)")
-                        .font(.largeTitle)
-                        .fontWeight(.thin)
+                        .font(.system(size: 35))
+//                        .fontWeight(.thin)
                         .padding()
                         .background(Color.black)
                         .foregroundColor(Color.blue)
+                        .cornerRadius(20)
                         .opacity(wonPlayer.isEmpty ? 0.0 : 1.0)
 
             }
@@ -105,9 +106,9 @@ struct ContentView: View {
             }, label: {
                 Spacer()
                 Text("New game")
-                    .bold()
+                    .kerning(2)
                     .foregroundColor(.blue)
-                    .font(.system(size: 35, weight: .thin))
+                    .font(.system(size: 25, weight: .bold))
                 Spacer()
                 
             }).padding(.bottom, 150)
