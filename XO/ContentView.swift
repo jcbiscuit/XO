@@ -11,10 +11,12 @@ struct SplashScreenView: View {
     
     @State var animate = false
     @State var endSplash = false
-    
+    @State private var change = false
+        
     var body: some View {
-        ZStack {
+      
             Color("splashscreencolor")
+            VStack{
         Image("oxlogo3")
             .resizable()
             .renderingMode(.original)
@@ -27,13 +29,20 @@ struct SplashScreenView: View {
             .ignoresSafeArea(.all, edges: .all)
             .onAppear(perform: animateSplash)
             .opacity(endSplash ? 0 : 1)
+            .rotationEffect(Angle.degrees(change ? 220 : 0))
+            .animation(.easeInOut)
+                
+    
+                
+                
         
         }
     }
     
     func animateSplash() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            withAnimation(Animation.easeOut(duration: 1.0)) {
+            withAnimation(Animation.easeInOut(duration: 1.0)) {
+        
                 animate.toggle()
             }
         }
