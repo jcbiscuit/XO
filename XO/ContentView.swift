@@ -29,8 +29,8 @@ struct SplashScreenView: View {
             .ignoresSafeArea(.all, edges: .all)
             .onAppear(perform: animateSplash)
             .opacity(endSplash ? 0 : 1)
-            .rotationEffect(Angle.degrees(change ? 220 : 0))
-            .animation(.easeInOut)
+//            .rotationEffect(Angle.degrees(change ? 220 : 0))
+//            .animation(.easeInOut)
                 
     
                 
@@ -41,7 +41,7 @@ struct SplashScreenView: View {
     
     func animateSplash() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            withAnimation(Animation.easeInOut(duration: 1.0)) {
+            withAnimation(Animation.easeIn(duration: 1.0)) {
         
                 animate.toggle()
             }
