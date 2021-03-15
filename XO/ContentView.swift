@@ -11,7 +11,7 @@ struct SplashScreenView: View {
     
     @State var animate = false
     @State var endSplash = false
-    @State private var change = false
+    
         
     var body: some View {
       
@@ -60,6 +60,8 @@ struct ContentView: View {
     @State var player: Player = .one
     
     @State var wonPlayer: String = ""
+    
+   
     
     var body: some View {
         ZStack {
@@ -129,6 +131,7 @@ struct ContentView: View {
 }
     }
     func buttonTapped(key: String) {
+     
         if player == .one {
             viewModel.setValue(.cross, for: key)
         } else {
@@ -143,6 +146,7 @@ struct ContentView: View {
         player.toggle()
     }
     }
+    
     func getValue(key: String) -> String {
         viewModel.getValue(for: key).rawValue
     }
