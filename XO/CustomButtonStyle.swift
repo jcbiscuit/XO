@@ -18,4 +18,5 @@ struct CustomButtonStyle: ButtonStyle {
             .background(Color.black)
             .scaleEffect(configuration.isPressed ? 0.9 : 1.0)
     }
+    
 }

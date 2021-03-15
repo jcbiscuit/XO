@@ -37,24 +37,21 @@ struct GameFlow {
     mutating func setValue(_ state: ButtonState, for key: String) {
         content[key] = state
     }
+    
     func validate() {
-        
     }
     
     func isWin() -> Bool {
         
         for possibility in winningPossibilities {
-            
             if content[possibility[0]] != nil {
-
                 print(content[possibility[0]] as Any, content[possibility[1]] as Any)
                 if content[possibility[0]] == content[possibility[1]], content[possibility[1]] == content[possibility[2]] {
                     return true
                 }
             }
-                
-           
         }
-         return false 
+        return false
     }
+    
 }
